@@ -22,6 +22,13 @@ En sortie: [
  */
 
 function getStringsLength(strings) {
+
+const completedString = strings.map(food => {
+  let numOfChar= food.length;
+  return food +' contains '+ numOfChar+ ' characters'
+});
+return completedString;
+
 }
 
 // Si besoin, tu peux toujours visualiser le résultat avec console.log,
