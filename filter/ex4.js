@@ -29,7 +29,11 @@ Sortie attendue:
  */
 
 function filterOnPrice(products, maxPrice) {
-}
+  const cheaper = products.filter (phone =>{
+    return phone.price <= maxPrice;
+  });
+  return cheaper;
+};
 
 // Ne pas modifier l'export
 module.exports = filterOnPrice;

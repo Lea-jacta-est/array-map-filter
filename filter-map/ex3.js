@@ -51,6 +51,61 @@ Sortie attendue:
 */
 
 function getStudentsPerCurriculum(campuses, curriculumName) {
+
+function isCurriculum(curriculumList){
+  for (i=0; i<curriculumList.length; i++){
+    if (curriculumList[i].name === curriculumName){
+      return true;
+    }//if
+  }//for
+}; //function isCurriculum  
+//  prend en entrée un l'array "curriculums" contenant des objs, 
+//  return si un des objs de l'array est curriculumName.
+
+const cityWithcurriculum = campuses.filter(campus => {
+  return isCurriculum(campus.curriculums);
+}); //filter cityWithcurriculum  
+// return: array avec des objs "ville" contenant le curriculumName.
+
+function onlyTheCurriculum(curriculum){
+  if (curriculum.name === curriculumName){
+    return true;
+  }//if
+}//function onlyTheCurriculum
+//  prend en entrée un obj
+//  return si l'objet a pour name le curriculumName
+
+
+const reducedCurriculumList = cityWithcurriculum.map(campus =>{
+
+  const deleteUselessCurriculum = campus.curriculums.filter(curriculum => {
+    return onlyTheCurriculum(curriculum);
+
+  });// filter deleteUselessCurriculum
+
+  campus.curriculums =  deleteUselessCurriculum;
+  return campus
+}); // map reducedCurriculumList 
+
+const curriculumsItem = reducedCurriculumList.map(campus => {
+  const nbStudent = campus.curriculums[0].numStudents;
+  const cityName = campus.city;
+
+  const cityStudent = {};
+  
+  cityStudent[cityName] = nbStudent;
+
+  return cityStudent
+ // return campus.curriculums;
+  //const number = city.curriculums.map((group)=>{
+  //     return city.numStudents = group.numStudents;
+  //   });//mapIn
+  // return number;
+//});
+  
+
+});
+return curriculumsItem;
 }
 
 module.exports = getStudentsPerCurriculum;

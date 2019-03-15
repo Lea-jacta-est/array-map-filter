@@ -64,6 +64,34 @@ En prenant les deux exemples d'arguments d'entrée, on obtiendrait ceci en sorti
 */
 
 function getActivitiesMembers(activities, persons) {
+
+  const personsPerActivities = activities.map(activity => {
+
+    const activityPersons = {
+      'activity': activity,
+      'persons': []
+    };
+
+    function doesHePlay(sportsList) {
+      sportsList.forEach(sport => {
+        if (sport === activity) {
+          return true;
+        }
+      });
+      return false;
+    };
+
+    const returnName = persons.map(person => {
+      if (doesHePlay(person.activities)) {
+        return activityPersons.person.push(person.name);
+      }
+    });
+
+    return activityPersons;
+
+  });
+
+  return personsPerActivities;
 }
 
 
